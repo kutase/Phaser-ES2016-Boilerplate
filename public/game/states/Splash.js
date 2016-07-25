@@ -1,0 +1,22 @@
+import Phaser from 'phaser'
+import { centerGameObjects } from '../utils'
+
+export default class extends Phaser.State {
+  init () {}
+
+  preload () {
+    // this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar')
+    // centerGameObjects([this.loaderBar])
+
+    // this.load.setPreloadSprite(this.loaderBar)
+
+    //
+    // load your assets
+    //
+  }
+
+  create () {
+    this.state.start('Game')
+  }
+
+}
