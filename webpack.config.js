@@ -7,13 +7,13 @@ let precss = require('precss')
 let phaserModule = path.join(__dirname, '/node_modules/phaser/')
 let phaser = path.join(phaserModule, '/build/custom/phaser-split.js')
 let pixi = path.join(phaserModule, '/build/custom/pixi.js')
-let p2 = path.join(phaserModule, '/dist/p2.js')
+let p2 = path.join(phaserModule, '/build/custom/p2.js')
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './public/index.js'
+    './public/index'
   ],
   output: {
     pathinfo: true,
@@ -24,7 +24,10 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify('development')
+    })
   ],
   module: {
     noParse: p2,

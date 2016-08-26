@@ -1,12 +1,12 @@
 {
-  "name": "owengine2",
+  "name": "phaser_es7_boilerplate",
   "version": "0.0.1",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack",
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "prod-build": "webpack -p --config ./webpack.production.config.js"
   },
   "author": "kutase <kutase123@gmail.com>",
   "license": "UNLICENSED",
@@ -14,28 +14,12 @@
     "bluebird": "^3.3.5",
     "body-parser": "^1.15.0",
     "express": "^4.14.0",
-    "express-validator": "^2.20.4",
-    "jsonwebtoken": "^6.2.0",
     "lodash": "^4.12.0",
-    "mongoose": "^4.4.12",
     "node-uuid": "^1.4.7",
-    "passport": "^0.3.2",
-    "passport-jwt": "^2.0.0",
     "phaser": "*",
     "purecss": "^0.6.0",
     "react": "^15.2.1",
-    "react-debounce-input": "^2.4.0",
-    "react-dom": "^15.2.1",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.5.2",
-    "react-router-redux": "^4.0.5",
-    "react-tap-event-plugin": "^1.0.0",
-    "redis": "*",
-    "redux": "^3.5.2",
-    "redux-thunk": "^2.1.0",
-    "socket.io": "*",
-    "socket.io-client": "latest",
-    "whatwg-fetch": "^1.0.0"
+    "react-dom": "^15.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
@@ -45,8 +29,6 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
-    "browser-sync": "*",
-    "browser-sync-webpack-plugin": "*",
     "expose-loader": "*",
     "webfontloader": "*",
     "css-loader": "^0.23.1",
@@ -58,7 +40,6 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.12.1",
-    "redux-logger": "^2.6.1"
+    "webpack-hot-middleware": "^2.12.1"
   }
 }

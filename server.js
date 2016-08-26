@@ -4,8 +4,6 @@ let express = require('express'),
   bodyParser = require('body-parser'),
   app = express(),
   http = require('http').createServer(app),
-  io = require('socket.io')(http),
-  sioController = require('./socketio/controller'),
   webpack = require('webpack'),
   webpackConfig = require('./webpack.config'),
   webpackDevMiddleware = require('webpack-dev-middleware'),
@@ -34,10 +32,3 @@ app.get('*', function (request, response) {
 http.listen(port, () =>
   console.log(`🌎+👽👾=🔯 --> Listening on port: ${port}`)
 )
-
-io.on('connection', (socket) =>
-  sioController.handleSocket(socket)
-)
-
-sioController.startPhysicsLoop()
-sioController.updateClientsLoop(io)

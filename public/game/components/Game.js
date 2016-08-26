@@ -4,7 +4,6 @@ import { findDOMNode } from 'react-dom';
 import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
-import Socketio from './Socketio'
 
 //States
 import BootState from '../states/Boot'
@@ -18,7 +17,7 @@ class Game extends Phaser.Game {
 
     super(width, height, Phaser.AUTO, null, null);
 
-    this.socket = new Socketio()
+    // this.socket = new Socketio()
 
     this.state.add('Boot', BootState, false)
     this.state.add('Splash', SplashState, false)
@@ -28,8 +27,6 @@ class Game extends Phaser.Game {
   }
 
   removeGame () {
-    console.log(this.socket)
-    this.socket.disconnect()
     this.destroy()
   }
 }
@@ -38,7 +35,6 @@ export default class ReGame extends Component {
   constructor () {
     super()
     this.Game = new Game()
-    window.g = this.Game
   }
 
   componentDidMount () {
@@ -58,9 +54,24 @@ export default class ReGame extends Component {
     this.Game.parent = findDOMNode(this)
   }
 
+  updateCanvas () {
+    this.Game.removeGame()
+    this.Game = new Game()
+    this.renderGame()
+  }
+
   render () {
     return (
-      <div id="game"></div>
+      <div>
+        <div id="game"></div>
+        <button
+          onClick={this.updateCanvas.bind(this)}
+          className="btn"
+          style={{margin: '5px'}}
+        >
+          Make update
+        </button>
+      </div>
     )
   }
 }
