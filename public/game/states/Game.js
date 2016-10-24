@@ -11,6 +11,9 @@ export default class Game extends State {
   create () {
     let game = this.game
 
+    game.renderer.renderSession.roundPixels = true
+    game.world.resize(4500, 4500)
+
     this.starfield = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'stars')
 
     game.physics.startSystem(Physics.ARCADE)
@@ -47,6 +50,7 @@ export default class Game extends State {
 
     this.player = new Player(game, game.world.centerX, game.world.centerY, 'shipMain')
     this.player.rotation = Math.PI / 2
+    this.player.bindCamera()
 
     window.player = this.player
 

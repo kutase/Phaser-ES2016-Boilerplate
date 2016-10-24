@@ -8,7 +8,8 @@ let express = require('express'),
   webpackConfig = require('./webpack.config'),
   webpackDevMiddleware = require('webpack-dev-middleware'),
   webpackHotMiddleware = require('webpack-hot-middleware'),
-  path = require('path')
+  path = require('path'),
+  opener = require('opener')
 
 const port = 1337
 const compiler = webpack(webpackConfig)
@@ -29,6 +30,7 @@ app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
-http.listen(port, () =>
+http.listen(port, () => {
   console.log(`🌎+👽👾=🔯 --> Listening on port: ${port}`)
-)
+  opener(`http://localhost:${port}`)
+})
