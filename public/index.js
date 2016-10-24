@@ -1,9 +1,5 @@
-import React from 'react'
-import { render } from 'react-dom'
+import 'whatwg-fetch'
 
-import App from './App'
+import Game from './game/components/Game'
 
-render(
-  <App />,
-  document.getElementById('root')
-)
+let game = new Game('root')
