@@ -7,7 +7,9 @@ import BootState from '../states/Boot'
 import GameState from '../states/Game'
 import SplashState from '../states/Splash'
 
-export default class Game extends Phaser.Game {
+import StateStore from '../classes/StateStore'
+
+class Game extends Phaser.Game {
   constructor () {
     let width = window.innerWidth - 20
     let height = window.innerHeight
@@ -17,6 +19,10 @@ export default class Game extends Phaser.Game {
 
     super(width, height, Phaser.AUTO, null, null);
 
+    window.game = this
+
+    this.gameState = new StateStore({}, '/loadGame', '/saveGame')
+
     this.state.add('Boot', BootState, false)
     this.state.add('Splash', SplashState, false)
     this.state.add('Game', GameState, false)
@@ -24,8 +30,8 @@ export default class Game extends Phaser.Game {
     this.state.start('Boot')
   }
 
-  startState (stateName) {
-    this.state.start(stateName)
+  startState (state) {
+    this.state.start(state)
   }
 
   removeGame () {

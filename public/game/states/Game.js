@@ -1,5 +1,7 @@
 import { State, Physics } from 'phaser'
-import { doInputAction } from '../components/utils'
+
+import { doInputAction } from '../utils/controls'
+import Player from '../classes/Player'
 
 export default class Game extends State {
   init () {}
@@ -43,15 +45,12 @@ export default class Game extends State {
   setupPlayer () {
     let game = this.game
 
-    this.player = game.add.sprite(game.world.centerX, game.world.centerY, 'shipMain')
-    this.player.anchor.setTo(0.5)
+    this.player = new Player(game, game.world.centerX, game.world.centerY, 'shipMain')
     this.player.rotation = Math.PI / 2
 
     window.player = this.player
 
     this.cursors = game.input.keyboard.createCursorKeys()
-
-    game.physics.arcade.enable(this.player)
   }
 
   execInputs (action) {
