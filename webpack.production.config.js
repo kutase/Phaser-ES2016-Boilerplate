@@ -18,7 +18,7 @@ module.exports = {
   ],
   output: {
     pathinfo: true,
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'build/js/'),
     publicPath: '/static/js/',
     filename: 'bundle.js',
     sourceMapFilename: 'bundle.map.js'
@@ -46,10 +46,10 @@ module.exports = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new WebpackShellPlugin({ // hoosk for build
-      onBuildStart: [/*'node clearBuildPath.js'*/], // before start
-      onBuildEnd: [] // after end
-    })
+    // new WebpackShellPlugin({ // hoosk for build
+    //   // onBuildStart: ['node clearBuildPath.js'], // before start
+    //   onBuildEnd: [] // after end
+    // })
   ],
   module: {
     noParse: p2,

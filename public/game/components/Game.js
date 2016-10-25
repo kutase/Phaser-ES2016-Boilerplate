@@ -75,13 +75,15 @@ export default class ReGame extends Component {
     return (
       <div>
         <div id="game"></div>
-        <button
-          onClick={this.updateCanvas.bind(this)}
-          className="btn"
-          style={{margin: '5px'}}
-        >
-          Make update
-        </button>
+        {process.env.NODE_ENV !== 'production' ?
+          <button
+            onClick={this.updateCanvas.bind(this)}
+            className="btn"
+            style={{margin: '5px'}}
+          >
+            Make update
+          </button> 
+        : ''}
       </div>
     )
   }
