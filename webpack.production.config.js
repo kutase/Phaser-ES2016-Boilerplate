@@ -12,7 +12,7 @@ let p2 = path.join(phaserModule, '/build/custom/p2.js')
 let WebpackShellPlugin = require('webpack-shell-plugin')
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   entry: [
     './public/index'
   ],

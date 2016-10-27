@@ -10,7 +10,7 @@ let pixi = path.join(phaserModule, '/build/custom/pixi.js')
 let p2 = path.join(phaserModule, '/build/custom/p2.js')
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
     './public/index'
