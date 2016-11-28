@@ -1,6 +1,6 @@
 {
   "name": "phaser_es7_boilerplate",
-  "version": "0.0.1",
+  "version": "0.9.0",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -13,15 +13,18 @@
   "dependencies": {
     "bluebird": "^3.3.5",
     "body-parser": "^1.15.0",
+    "bowser": "^1.5.0",
     "express": "^4.14.0",
     "fs-extra": "^0.30.0",
     "lodash": "^4.12.0",
-    "node-uuid": "^1.4.7",
+    "uuid": "*",
+    "minimongo": "^4.3.0",
     "opener": "^1.4.2",
-    "phaser": "*",
+    "phaser": "^2.6.2",
     "purecss": "^0.6.0",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
@@ -32,9 +35,11 @@
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
     "css-loader": "^0.23.1",
+    "exports-loader": "^0.6.3",
     "expose-loader": "*",
     "file-loader": "^0.9.0",
     "postcss-loader": "^0.9.1",
+    "imports-loader": "^0.6.5",
     "precss": "^1.4.0",
     "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.1",
