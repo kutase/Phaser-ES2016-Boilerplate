@@ -9,8 +9,6 @@ let phaser = path.join(phaserModule, '/build/custom/phaser-split.js')
 let pixi = path.join(phaserModule, '/build/custom/pixi.js')
 let p2 = path.join(phaserModule, '/build/custom/p2.js')
 
-let WebpackShellPlugin = require('webpack-shell-plugin')
-
 module.exports = {
   devtool: 'source-map',
   entry: [
@@ -30,8 +28,8 @@ module.exports = {
       }
     }),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
+      // sourceMap: true,
       beautify: false,
       comments: false,
       compress: {
@@ -44,44 +42,42 @@ module.exports = {
         unsafe: true
       }
     }),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    // new WebpackShellPlugin({ // hoosk for build
-    //   // onBuildStart: ['node clearBuildPath.js'], // before start
-    //   onBuildEnd: [] // after end
-    // })
+    new webpack.optimize.AggressiveMergingPlugin()
   ],
   module: {
-    noParse: p2,
-    loaders: [
+    rules: [
+      { 
+        test: /\.json$/, 
+        use: "json-loader" 
+      },
       {
-        loaders: [ 'babel-loader' ],
+        test: /(\.jsx|\.js)$/,
+        use: [ 'babel-loader' ],
         include: [
           path.resolve('./public/')
-        ],
-        test: /(\.jsx|\.js)$/
+        ]
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       },
       {
         test: /pixi\.js/,
-        loader: 'expose?PIXI'
+        use: 'expose-loader?PIXI'
       },
       {
         test: /phaser-split\.js$/,
-        loader: 'expose?Phaser'
+        use: 'expose-loader?Phaser'
       },
       {
         test: /p2\.js/,
-        loader: 'expose?p2'
+        use: 'expose-loader?p2'
       }
     ]
-  },
-  postcss: () => [ autoprefixer, precss ],
-  node: {
-    fs: 'empty'
   },
   resolve: {
     alias: {

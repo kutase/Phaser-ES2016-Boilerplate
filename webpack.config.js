@@ -12,6 +12,7 @@ let p2 = path.join(phaserModule, '/build/custom/p2.js')
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     './public/index'
   ],
@@ -23,43 +24,45 @@ module.exports = {
     sourceMapFilename: 'bundle.map.js'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify('development')
     })
   ],
   module: {
-    noParse: p2,
-    loaders: [
+    rules: [
+      { 
+        test: /\.json$/, 
+        use: "json-loader" 
+      },
       {
-        loaders: [ 'react-hot', 'babel-loader' ],
+        test: /(\.jsx|\.js)$/,
+        use: [ 'babel-loader' ],
         include: [
           path.resolve('./public/')
-        ],
-        test: /(\.jsx|\.js)$/
+        ]
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       },
       {
         test: /pixi\.js/,
-        loader: 'expose?PIXI'
+        use: 'expose-loader?PIXI'
       },
       {
         test: /phaser-split\.js$/,
-        loader: 'expose?Phaser'
+        use: 'expose-loader?Phaser'
       },
       {
         test: /p2\.js/,
-        loader: 'expose?p2'
+        use: 'expose-loader?p2'
       }
     ]
-  },
-  postcss: () => [ autoprefixer, precss ],
-  node: {
-    fs: 'empty'
   },
   resolve: {
     alias: {

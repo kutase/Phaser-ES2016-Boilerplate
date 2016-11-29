@@ -21,12 +21,17 @@ app.use(express[ 'static' ]('public'))
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
-  publicPath: webpackConfig.output.publicPath
+  publicPath: webpackConfig.output.publicPath,
+  headers: { 'Access-Control-Allow-Origin': '*' },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: true
+  }
 }))
 
 app.use(webpackHotMiddleware(compiler))
 
-app.get('*', function (request, response) {
+app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
