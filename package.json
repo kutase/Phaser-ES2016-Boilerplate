@@ -23,6 +23,7 @@
     "purecss": "^0.6.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-lite": "^0.15.28",
     "uuid": "*",
     "whatwg-fetch": "^2.0.1"
   },

@@ -32,6 +32,8 @@ module.exports = {
       // sourceMap: true,
       beautify: false,
       comments: false,
+      minimize: true,
+      debug: false,
       compress: {
         sequences: true,
         booleans: true,
@@ -83,7 +85,9 @@ module.exports = {
     alias: {
       'phaser': phaser,
       'pixi': pixi,
-      'p2': p2
+      'p2': p2,
+      'react': 'react-lite',
+      'react-dom': 'react-lite'
     }
   }
 }
