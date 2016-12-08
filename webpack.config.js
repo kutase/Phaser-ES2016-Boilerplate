@@ -4,7 +4,7 @@ let autoprefixer = require('autoprefixer')
 let precss = require('precss')
 
 // Phaser webpack config
-let phaserModule = path.join(__dirname, '/node_modules/phaser/')
+let phaserModule = path.join(__dirname, '/node_modules/phaser-ce/')
 let phaser = path.join(phaserModule, '/build/custom/phaser-split.js')
 let pixi = path.join(phaserModule, '/build/custom/pixi.js')
 let p2 = path.join(phaserModule, '/build/custom/p2.js')

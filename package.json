@@ -20,6 +20,7 @@
     "minimongo": "^4.3.0",
     "opener": "^1.4.2",
     "phaser": "^2.6.2",
+    "phaser-ce": "^2.7.1",
     "purecss": "^0.6.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",

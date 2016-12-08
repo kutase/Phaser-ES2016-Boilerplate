@@ -13,7 +13,7 @@ export default class Boot extends Phaser.State {
   }
 
   loadStatic () {
-    this.load.image('stars', './assets/starfield.jpg')
+    this.load.image('stars', './assets/texture_4.jpg')
     this.load.image('shipMain', './assets/shipMain.png')
     this.load.image('shipBigPart', './assets/shipBigPartN.png')
   }
