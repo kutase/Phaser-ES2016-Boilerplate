@@ -1,4 +1,9 @@
 export default class Sprite {
+  game = null
+  sprite = null
+  spriteKey = null
+  physicsEnabled = false
+
   constructor (game, x, y, spriteKey, enablePhysics = false) {
     this.game = game
 

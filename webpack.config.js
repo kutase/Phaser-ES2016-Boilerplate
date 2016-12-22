@@ -23,6 +23,7 @@ module.exports = {
     filename: 'bundle.js',
     sourceMapFilename: 'bundle.map.js'
   },
+  performance: { hints: false },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({

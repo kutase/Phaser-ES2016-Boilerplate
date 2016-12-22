@@ -3,13 +3,19 @@ import { State, Physics } from 'phaser'
 import { doInputAction } from '../utils/controls'
 import Player from '../classes/Player'
 
+import { time } from 'core-decorators'
+
 export default class Game extends State {
+  player = null
+
   init () {}
 
   preload () {}
 
   create () {
     let game = this.game
+
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
 
     game.renderer.renderSession.roundPixels = true
     game.world.resize(4500, 4500)
@@ -19,30 +25,10 @@ export default class Game extends State {
     game.physics.startSystem(Physics.ARCADE)
 
     this.setupPlayer()
-
-    let mainLoop = game.time.create(false)
-    mainLoop.loop(15, this.mainLoop, this)
-
-    let physicsLoop = game.time.create(false)
-    physicsLoop.loop(15, this.physicsLoop, this)
-
-    mainLoop.start()
-    physicsLoop.start()
   }
 
-  mainLoop () {
-    // <-------------------------->
-    // < Handle inputs and redraw >
-    // <-------------------------->
-
+  update () {
     this.handleInputs()
-
-  }
-
-  physicsLoop () {
-    // <---------------------->
-    // < Execute hard physics >
-    // <---------------------->
   }
 
   setupPlayer () {
@@ -61,6 +47,7 @@ export default class Game extends State {
     doInputAction(action, this.player)
   }
 
+  @time
   handleInputs () {
     let cursors = this.cursors
 
