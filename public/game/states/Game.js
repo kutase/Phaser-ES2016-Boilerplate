@@ -3,8 +3,6 @@ import { State, Physics } from 'phaser'
 import { doInputAction } from '../utils/controls'
 import Player from '../classes/Player'
 
-import { time } from 'core-decorators'
-
 export default class Game extends State {
   player = null
 
@@ -47,7 +45,6 @@ export default class Game extends State {
     doInputAction(action, this.player)
   }
 
-  @time
   handleInputs () {
     let cursors = this.cursors
 

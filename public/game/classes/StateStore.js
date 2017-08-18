@@ -1,5 +1,5 @@
 import { checkStatus, parseJSON, postJSON } from '../../fetchLib'
-import uuid from 'node-uuid'
+import uuid from 'uuid'
 
 export default class Store {
   constructor (state = {}, loadURL, saveURL) {
